@@ -1,0 +1,14 @@
+#!/bin/bash 
+#SBATCH -J explicit1		# Job Name
+#SBATCH -o myjob.o%j       	# Name of stdout output file
+#SBATCH -e myjob.e%j       	# Name of stderr error file
+#SBATCH -p normal 		# Queue (partition) name -- normal, development, etc.
+#SBATCH -N 10     		# Total number of mpi tasks requested
+#SBATCH -n 680
+#SBATCH -t 17:00:00   		# Run time (hh:mm:ss) - 
+#SBATCH --mail-user=tmiesse@gmu.edu
+#SBATCH -A TG-BCS130009  # Allocation to charge time against.
+#SBATCH --mail-type=ALL
+date > run.start   
+ibrun ./padcswan       	# Run the MPI executable named a.out 
+date > run.complete  
